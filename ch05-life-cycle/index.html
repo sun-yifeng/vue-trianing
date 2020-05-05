@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ch05-生命周期-不能用箭头函数</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+		</div>
+		<script type="text/javascript">
+			var data = {message: "hello vue !"};
+			var vm = new Vue({
+				el: "#app",
+				data: data,
+				// 生命周期函数不能使用箭头函数，因没有this;
+				// 实例创建之前
+				beforeCreate() {
+					console.log("beforeCreate...");
+					
+				},
+				// 实例创建之后，vm.$el挂载之前；
+				created() {
+					console.log("created...");
+				},
+				// vm.$el 挂载之前
+				beforeMount() {
+					console.log("beforeMount...");
+				},
+				// vm.$el 挂载之后
+				mounted() {
+					console.log("mounted...");
+				},
+				// 数据更新之前
+				beforeUpdate() {
+					console.log("beforeUpdate...");
+				},
+				// 数据更新之后
+				updated() {
+					console.log("updated...");
+				}
+			});
+			setTimeout(function() {
+				vm.$data.message = "data changed...";
+			}, 10);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ch09-列表渲染</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="item, index in items">
+					{{index}} : {{item.message}}
+				</li>
+			</ul>
+			<ul>
+				<li v-for="obj,key in object">
+					{{key}} : {{obj}}
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					items: [
+						{message: "Foo"},
+						{message: "Bar"},
+					],
+					object: {
+						title: "How to do list in Vue",
+						author: "sunyifeng",
+						publisher: "2020-05-03",
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ch11-表单提交</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>1、单行输入数据绑定</p>
+			<div>
+				<input v-model="message" type="" name="" id="firstName" value="" placeholder="edit me"/>
+				<br>
+				{{message}}	
+			</div>
+			
+			<p>2、多行输入数据绑定</p>
+			<div>
+				<textarea v-model="message2"></textarea>
+				<br>
+				{{message2}}
+			</div>
+			
+			<p>3、checkBox数据绑定</p>
+			<div>
+				<div class="mui-input-row mui-checkbox ">
+					<input v-model="checkedName" name="name1" id="id1"  type="checkbox" value="aaa"><label>Checkbox1</label>
+					<input v-model="checkedName" name="name2" id="id2"  type="checkbox" value="bbb" ><label>Checkbox2</label>
+					<input v-model="checkedName" name="name3" id="id3"  type="checkbox" value="ccc" ><label>Checkbox3</label>
+					<input v-model="checkedName" name="name4" id="id4"  type="checkbox" value="ddd" ><label>Checkbox4</label>
+				</div>
+				选择项：{{checkedName}}
+			</div>
+			
+			<p>4、radio数据绑定</p>
+			<div>
+				<div class="mui-input-row mui-radio ">
+					<input v-model="radioName" name="radio1" type="radio" value="one"><label>Radio1</label>
+					<input v-model="radioName" name="radio2" type="radio" value="two"><label>Radio2</label>
+					<input v-model="radioName" name="radio3" type="radio" value="three"><label>Radio3</label>
+					<input v-model="radioName" name="radio4" type="radio" value="four"><label>Radio4</label>
+				</div>
+				选择项：{{radioName}}
+			</div>
+			<!-- 提交表单 -->
+			<button type="button" @click="submit">提交表单</button>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				/* 对表单元素默认值的设置 */
+				data: {
+					message: "welcome to vue !",
+					message2: "hello, sunyifeng !",
+					checkedName: ["bbb","ccd"], // checkBox的value
+					radioName: "one"           // radio的value
+				},
+				methods:{
+					submit: function () {
+						// this属性可获取表单中的值
+						console.log(this.message);
+						var postObj = {
+							msg1: this.message,
+							msg2: this.message2,
+							box1: this.checkedName,
+							rad1: this.radioName,
+						}
+					    console.log("postObj:" + JSON.stringify(postObj));
+					},		
+				}
+			});
+		</script>
+	</body>
+</html>

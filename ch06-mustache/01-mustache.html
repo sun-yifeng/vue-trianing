@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ch06-模板插值Mustache</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+			<p>文本插值: {{rawHtml}}</p>
+			<p>v-html指令: <span v-html="rawHtml"></span></p>
+			<p v-html="rawHtml"></p>
+		</div>
+		<script type="text/javascript">
+			var data = {
+				message: "hello vue !",
+			    rawHtml: "<span style='color:red'>this is should be rad </span>"
+			};
+			var vm = new Vue({
+				el: "#app",
+				data: data,
+			});
+		</script>
+	</body>
+</html>

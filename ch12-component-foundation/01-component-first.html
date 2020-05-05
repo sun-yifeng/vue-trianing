@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ch12-组件基础</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<button-counter title="title1...." @clicknow="clickNow">
+				<h2>组件的插槽slot...</h2>
+			</button-counter>
+			<button-counter title="title2...." @clicknow="clickNow"></button-counter>
+		</div>
+		<script type="text/javascript">
+			Vue.component("button-counter",{
+				props:["title"],
+				data: function () {
+					return {
+						count: 0,
+					}
+				},
+				template:"\
+				        <div>\
+							<h1>hi...</h1>\
+							<button v-on:click='myFuncation()'>\
+								{{title}} click me {{count}}\
+						    </button>\
+							<slot></slot>\
+						</div>",
+				methods:{
+					myFuncation: function () {
+						this.count ++;
+						// $emit 定义触发事件，clicknow要全部小写
+						this.$emit('clicknow', this.count);
+					},
+				}
+			})
+			var vm = new Vue({
+				el:"#app",
+				data: {
+					
+				},
+				methods:{
+					// 此处的clickNow中N可以大写
+					clickNow: function (e) {
+						console.log("e:" + e);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

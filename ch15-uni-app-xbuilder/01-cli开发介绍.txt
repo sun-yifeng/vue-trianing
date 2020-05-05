@@ -1,0 +1,6 @@
+cli方式开发
+1、涉及终端、node、npm;
+2、less/sass/typescript/babel等编译器；
+3、各种流行的组件
+
+uni-app是框架，Hbuilder是ide;

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ch04-数据和方法</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+		</div>
+		<script type="text/javascript">
+			var data = {message: "hello vue !"};
+			var vm = new Vue({
+				el: "#app",
+				data: data
+			});
+			//
+			vm.$watch("message", function (newVal, oldVal) {
+				console.log(newVal, oldVal);
+			})
+			vm.$data.message = "test $watch";
+		</script>
+	</body>
+</html>
